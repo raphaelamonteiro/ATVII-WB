@@ -1,4 +1,4 @@
-🧾 Atividade prática ATVII – Interface Gráfica
+# 🧾 Atividade prática ATVII – Interface Gráfica
 **Professor:** [Gerson da Penha Neto](https://github.com/gerson-pn)
 
 ---
@@ -15,7 +15,8 @@
 <img align="center" alt="VSCode" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg" />
 </div>
 
----
+
+
 ## ☕ Contextualização
 Após o sucesso do sistema CLI desenvolvido para o Grupo World Beauty (WB), surgiu a necessidade de atualizar o projeto com uma interface gráfica moderna (GUI), acessível via navegador comum e dispositivos móveis.
 <br>
