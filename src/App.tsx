@@ -1,4 +1,3 @@
-import './index.css';
 import RouterApp from './routes';
 
 function App() {
