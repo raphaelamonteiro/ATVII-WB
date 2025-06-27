@@ -1,6 +1,5 @@
 .card {
   background-color: white;
-  border-radius: 10px;
   background-color: var(--white);
   -webkit-box-shadow: 8px 6px 17px -5px rgba(64, 29, 16, 0.2);
   -moz-box-shadow: 8px 6px 17px -5px rgba(64, 29, 16, 0.2);
@@ -23,13 +22,13 @@
 .card-title {
   font-size: 20px;
   font-weight: 600;
-  color: var(--secondary) ;
+  color: var(--secondary);
   margin-top: 16px;
 }
 
 .card-description {
   font-size: 14px;
-  color: var(--secondary) ;
+  color: var(--secondary);
   margin: 12px 0;
 }
 
@@ -38,7 +37,6 @@
   color: var(--white);
   border: none;
   padding: 10px 20px;
-  border-radius: 5px;
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;

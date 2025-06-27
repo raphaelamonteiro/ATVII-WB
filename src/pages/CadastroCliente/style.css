@@ -1,31 +1,33 @@
-.container-cadastro{
+.container-cadastro {
     padding: 50px 5%;
-    
-    h2{
+
+    h2 {
         padding-bottom: 20px;
     }
 }
 
-.form-cadastro{
+.form-cadastro {
     background-color: var(--white);
     display: flex;
     flex-direction: column;
-    border-radius: 15px;
     padding: 30px 5%;
-    p{
+
+    p {
         margin-top: 10px;
     }
 }
-.image-user{
+
+.image-user {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.image-user img{
+
+.image-user img {
     width: 100px;
 }
 
-.form-cadastro input{
+.form-cadastro input {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
@@ -33,10 +35,9 @@
     outline: none;
     border: none;
     background-color: var(--gray-light);
-    border-radius: 10px;
 }
 
-.form-cadastro button{
+.form-cadastro button {
     background-color: var(--light-brown);
     border: 0;
     color: var(--white);
@@ -45,10 +46,9 @@
     margin-top: 20px;
     padding: 12px 35px;
     line-height: 24px;
-    border-radius: 10px;
     cursor: pointer;
 }
 
-.form-cadastro button:hover{
+.form-cadastro button:hover {
     background-color: var(--secondary);
 }

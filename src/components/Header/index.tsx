@@ -23,7 +23,7 @@ class Header extends React.Component<{}, HeaderState> {
       <div className="container-header">
         <div className="logo">
           <Link to={"/"} style={{ color: "inherit" }}>
-            <h1>World Beauty</h1>
+            <h1>WB</h1>
           </Link>
         </div>
 

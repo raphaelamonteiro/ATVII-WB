@@ -1,5 +1,5 @@
 import React from "react";
-import servicoIcon from "../../assets/images/servico-icon.png";
+import servicoIcon from "../../assets/images/servico.png";
 
 class CadastroServico extends React.Component {
   render(): React.ReactNode {

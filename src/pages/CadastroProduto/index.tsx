@@ -1,5 +1,5 @@
 import React from "react";
-import productIcon from "../../assets/images/products-icon.png";
+import productIcon from "../../assets/images/lipstick.png";
 
 class CadastroProduto extends React.Component {
   render(): React.ReactNode {

@@ -1,36 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap');
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-:root{
+:root {
     --primary: #FFDFEF;
     --secondary: #E53888;
     --light-brown: #A53860;
     --gray: #D9D9D9;
     --blue: #D76C82;
     --green: #F49BAB;
-    --white: #F4F8D3;
+    --white: #FFF2EB;
     --gray-light: #e5e1dc;
     --shade: #efefef;
 }
 
-body{
+body {
     color: var(--secondary);
     background-color: var(--primary);
     font-family: 'Comfortaa',
-            cursive;
+        cursive;
     font-size: 1.2rem;
     font-weight: 400;
 }
 
-ul, nav{
+ul,
+nav {
     list-style-type: none;
 }
 
-a{
+a {
     text-decoration: none;
 }

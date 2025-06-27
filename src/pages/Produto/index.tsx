@@ -1,45 +1,25 @@
 import React from "react";
-import SearchBar from "../../components/SearchBar";
 import { Link } from "react-router-dom";
+import { produtos } from "../../data/Produtos";
+import { IProduto } from "../../types/IProduto";
+import SearchBar from "../../components/SearchBar";
 
-interface IProduto {
-  id: string;
-  nomeProd: string;
-  descricao: string;
-  valor: number;
-}
-class Produto extends React.Component {
+
+class ProdutosPage extends React.Component {
   state: {
     produtos: IProduto[];
     filtro: string;
   } = {
-    produtos: [
-      {
-        id: "P1",
-        nomeProd: "Locao Capilar",
-        descricao: "Locao para deixar os cabelos mais sedosos.",
-        valor: 35.99,
-      },
-      {
-        id: "P2",
-        nomeProd: "Creme Hidratante",
-        descricao: "Creme hidratante para passar no rosto, maos e corpo.",
-        valor: 20.45,
-      },
-    ],
-    filtro: "",
-  };
-
-  buscarProduto = (): IProduto[] => {
-    return this.state.produtos;
-  };
+      produtos: produtos,
+      filtro: "",
+    };
 
   filtrarProdutos = (produtos: IProduto[], filtro: string): IProduto[] => {
     if (!filtro) return produtos;
     return produtos.filter(
       (produto) =>
         produto.id.toLowerCase().includes(filtro.toLowerCase()) ||
-        produto.nomeProd.toLowerCase().includes(filtro.toLowerCase())
+        produto.nome.toLowerCase().includes(filtro.toLowerCase())
     );
   };
 
@@ -58,24 +38,25 @@ class Produto extends React.Component {
           <div className="search-session">
             <div className="search-bar">
               <SearchBar
-                placeholder="Digite o ID ou o nome do produto"
+                placeholder="Digite o ID ou nome do produto"
                 onChange={this.handleSearchChange}
               />
             </div>
-            <Link to={"/cadastroproduto"} style={{ color: "inherit" }}>
+            <Link to="/cadastroproduto" style={{ color: "inherit" }}>
               <div className="button-cadastro">
                 <span>Cadastrar Produto</span>
               </div>
             </Link>
           </div>
         </div>
+
         <div className="table-component" role="region" tabIndex={0}>
           <table>
             <thead>
               <tr>
                 <th>ID</th>
                 <th>Nome</th>
-                <th>Descriçao</th>
+                <th>Descrição</th>
                 <th>Valor</th>
               </tr>
             </thead>
@@ -83,9 +64,9 @@ class Produto extends React.Component {
               {produtosFiltrados.map((produto) => (
                 <tr key={produto.id}>
                   <td>{produto.id}</td>
-                  <td>{produto.nomeProd}</td>
+                  <td>{produto.nome}</td>
                   <td>{produto.descricao}</td>
-                  <td>R$ {produto.valor}</td>
+                  <td>R$ {produto.valor.toFixed(2).replace(".", ",")}</td>
                 </tr>
               ))}
             </tbody>
@@ -96,4 +77,4 @@ class Produto extends React.Component {
   }
 }
 
-export default Produto;
+export default ProdutosPage;

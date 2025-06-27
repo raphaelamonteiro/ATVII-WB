@@ -1,19 +1,18 @@
-.container-estatisticas{
+.container-estatisticas {
   padding: 50px 5%;
   display: flex;
   flex-direction: column;
 }
 
-h2{
-    margin-bottom: 20px;
-    color: var(--light-brown);
-    font-size: 2rem;
+h2 {
+  margin-bottom: 20px;
+  color: var(--light-brown);
+  font-size: 2rem;
 }
 
 .table-component-listagem {
   overflow: auto;
   width: 100%;
-  border-radius: 20px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   background: var(--white);
   max-height: 60vh;
@@ -58,13 +57,13 @@ h2{
   }
 }
 
-.title-top-10{
+.title-top-10 {
   border-left: 5px solid var(--light-brown);
   padding-left: 10px;
   margin-bottom: 20px;
 }
 
-.title-top-10-valor{
+.title-top-10-valor {
   border-left: 5px solid var(--light-brown);
   padding-left: 10px;
   margin: 60px 0 20px;

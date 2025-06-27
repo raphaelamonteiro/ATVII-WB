@@ -1,32 +1,32 @@
 import React from "react";
 import "./style.css";
-import Banner from "../../components/Banner";
+import Hero from "../../components/Hero";
 import Card from "../../components/Card";
-import userIcon from "../../assets/images/user.png";
-import productsIcon from "../../assets/images/products-icon.png";
-import servicesIcon from "../../assets/images/servico-icon.png";
+import clientIcon from "../../assets/images/client.png";
+import productsIcon from "../../assets/images/lipstick.png";
+import servicesIcon from "../../assets/images/servico.png";
 import Estatistica from "../../components/Estatistica";
 
 class Home extends React.Component {
   render(): React.ReactNode {
     return (
       <div className="container-home">
-        <Banner />
+        <Hero />
         <div className="session-cards">
-          <h2>Serviços Disponiveis</h2>
+          <h2>Aqui você pode visualizar, cadastrar e editar clientes, produtos e serviços de forma prática e rápida.</h2>
           <div className="cards-container">
             <div className="card-div">
-              <Card title="Clientes" image={userIcon} descricao="Adicione, atualize ou exclua um cliente ao sistema para gerenciar suas informações e consumo." link="/cliente"/>
+              <Card title="Clientes" image={clientIcon} link="/cliente" />
             </div>
             <div className="card-div">
-              <Card title="Produtos" image={productsIcon} descricao="Adicione, atualize ou exclua um produto ao sistema para gerenciar suas informações e consumo." link="/produto"/>
+              <Card title="Produtos" image={productsIcon} link="/produto" />
             </div>
             <div className="card-div">
-              <Card title="Serviços" image={servicesIcon} descricao="Adicione, atualize ou exclua um serviços ao sistema para gerenciar suas informações e consumo." link="/servico"/>
+              <Card title="Serviços" image={servicesIcon} link="/servico" />
             </div>
           </div>
         </div>
-        <Estatistica/>
+        <Estatistica />
       </div>
     );
   }

@@ -1,5 +1,5 @@
 import React from "react";
-import userIcon from "../../assets/images/user.png";
+import clientIcon from "../../assets/images/client.png";
 import "./style.css";
 
 class CadastroCliente extends React.Component {
@@ -10,8 +10,8 @@ class CadastroCliente extends React.Component {
           <h2>Cadastre um usuario</h2>
         </div>
         <div className="form-cadastro">
-          <div className="image-user">
-            <img src={userIcon} alt="" />
+          <div className="image-client">
+            <img src={clientIcon} alt="" />
           </div>
           <form action="">
             <p>Nome:</p>
