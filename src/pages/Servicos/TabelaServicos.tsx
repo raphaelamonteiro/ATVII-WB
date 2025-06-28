@@ -22,6 +22,7 @@ const TabelaServicos: React.FC<Props> = ({
                         <th>Nome</th>
                         <th>Descrição</th>
                         <th>Valor</th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,8 +33,10 @@ const TabelaServicos: React.FC<Props> = ({
                             <td>{servico.descricao}</td>
                             <td>R$ {servico.valor.toFixed(2).replace(".", ",")}</td>
                             <div className="buttons">
-                                <button className="edit-button" onClick={() => onEditar(servico)}>Editar</button>
-                                <button className="remove-button" onClick={() => onExcluir(servico.id)}>Excluir</button>
+                                <td>
+                                    <button className="edit-button" onClick={() => onEditar(servico)}>Editar</button>
+                                    <button className="remove-button" onClick={() => onExcluir(servico.id)}>Excluir</button>
+                                </td>
                             </div>
                         </tr>
                     ))}
