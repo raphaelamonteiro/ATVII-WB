@@ -1,5 +1,4 @@
 import React from "react";
-import servicoIcon from "../../assets/images/servico.png";
 
 class CadastroServico extends React.Component {
   render(): React.ReactNode {
@@ -9,9 +8,6 @@ class CadastroServico extends React.Component {
           <h2>Cadastre um Serviço</h2>
         </div>
         <div className="form-cadastro">
-          <div className="image-user">
-            <img src={servicoIcon} alt="" />
-          </div>
           <form action="">
             <p>ID:</p>
             <input type="text" placeholder="Digite o ID do serviço" />
