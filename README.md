@@ -1,4 +1,5 @@
 # 🧾 Atividade prática ATVII – Interface Gráfica
+
 **Professor:** [Gerson da Penha Neto](https://github.com/gerson-pn)
 
 ---
@@ -15,19 +16,19 @@
 <img align="center" alt="VSCode" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg" />
 </div>
 
-
-
 ## ☕ Contextualização
+
 Após o sucesso do sistema CLI desenvolvido para o Grupo World Beauty (WB), surgiu a necessidade de atualizar o projeto com uma interface gráfica moderna (GUI), acessível via navegador comum e dispositivos móveis.
 <br>
 A GUI permite uma navegação mais amigável para o usuário final, mesmo sem conhecimento técnico, e facilita a visualização, edição e consulta dos dados do sistema.
 <br>
 
-
 ## 💡 Atividade proposta
+
 Você é o responsável por liderar a modernização do sistema, criando uma nova interface gráfica com React e o framework de design MaterializeCSS, seguindo os padrões do Material Design.
 
 ### 🎯 Objetivo:
+
 Desenvolver uma interface web responsiva para o sistema WB, com foco em **usabilidade, clareza e organização dos dados de clientes, produtos e serviços.**
 
 - Interfaces criadas com React (componentes de classe)
@@ -37,6 +38,7 @@ Desenvolver uma interface web responsiva para o sistema WB, com foco em **usabil
 ---
 
 ## 🛠️ Funcionalidades obrigatórias
+
 - Formulários de cadastro e edição de clientes
 - Listagem de clientes cadastrados
 - Componentes visuais para cadastro de serviços/produtos (em andamento)
@@ -49,8 +51,8 @@ Desenvolver uma interface web responsiva para o sistema WB, com foco em **usabil
 
 Antes de rodar o sistema, certifique-se de ter instalado:
 
-* [Node.js](https://nodejs.org/) (versão 14 ou superior)
-* npm (vem junto com o Node.js)
+- [Node.js](https://nodejs.org/) (versão 14 ou superior)
+- npm (vem junto com o Node.js)
 
 Verifique com:
 
@@ -75,7 +77,9 @@ cd ATVII-WB
 ```bash
 npm install
 ```
-3. **Execute a aplicação no navegador:
+
+3. Execute a aplicação no navegador:
+
 ```bash
 npm run dev
 ```
@@ -83,15 +87,17 @@ npm run dev
 Acesse no navegador:
 
 ```bash
-http://localhost:5173
+http://localhost:3002
 ```
 
-### 🧩 *Materiais de Apoio*
+### 🧩 _Materiais de Apoio_
 
-* 🔗 Repositório auxiliar: atvii-wb-typescript
-* 📚 [Documentação do React](https://reactjs.org)
-* 🎨 [Documentação do MaterializeCSS (v1.0.0)](https://materializecss.com)
+- 🔗 Repositório auxiliar: [atvii-wb-typescript](https://github.com/gerson-pn/atvii-wb-typescript)
+- 📚 [Documentação do React](https://reactjs.org)
+- 🎨 [Documentação do MaterializeCSS (v1.0.0)](https://materializecss.com)
 
 ---
+
 ---
+
 > Por [Raphaela Monteiro](https://github.com/raphaelamonteiro)
