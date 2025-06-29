@@ -34,8 +34,10 @@ const TabelaServicos: React.FC<Props> = ({
                             <td>R$ {servico.valor.toFixed(2).replace(".", ",")}</td>
                             <div className="buttons">
                                 <td>
-                                    <button className="edit-button" onClick={() => onEditar(servico)}>Editar</button>
-                                    <button className="remove-button" onClick={() => onExcluir(servico.id)}>Excluir</button>
+                                    <div className="buttons">
+                                        <button className="edit-button" onClick={() => onEditar(servico)}>Editar</button>
+                                        <button className="remove-button" onClick={() => onExcluir(servico.id)}>Excluir</button>
+                                    </div>
                                 </td>
                             </div>
                         </tr>

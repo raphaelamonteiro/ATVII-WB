@@ -1,7 +1,6 @@
 
 import React from "react";
 import { IProduto } from "../../types/IProduto";
-import "./style.css";
 
 interface Props {
     produtos: IProduto[];
@@ -33,13 +32,14 @@ const TabelaProdutos: React.FC<Props> = ({
                             <td>{produto.nome}</td>
                             <td>{produto.descricao}</td>
                             <td>R$ {produto.valor.toFixed(2).replace(".", ",")}</td>
-                            <td>
-
-                                <div className="buttons">
-                                    <button className="edit-button" onClick={() => onEditar(produto)}>Editar</button>
-                                    <button className="remove-button" onClick={() => onExcluir(produto.id)}>Excluir</button>
-                                </div>
-                            </td>
+                            <div className="buttons">
+                                <td>
+                                    <div className="buttons">
+                                        <button className="edit-button" onClick={() => onEditar(produto)}>Editar</button>
+                                        <button className="remove-button" onClick={() => onExcluir(produto.id)}>Excluir</button>
+                                    </div>
+                                </td>
+                            </div>
                         </tr>
                     ))}
                 </tbody>
@@ -47,5 +47,6 @@ const TabelaProdutos: React.FC<Props> = ({
         </div>
     );
 };
+
 
 export default TabelaProdutos;

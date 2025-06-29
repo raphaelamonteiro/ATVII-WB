@@ -1,88 +1,98 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
 import { produtos as produtosFixos } from "../../data/Produtos";
 import { IProduto } from "../../types/IProduto";
-import TabelaProdutos from "./TabelaProdutos";
 import SearchBar from "../../components/SearchBar";
+import TabelaProdutos from "./TabelaProdutos";
 
-const ProdutosPage: React.FC = () => {
-  const [produtos, setProdutos] = useState<IProduto[]>([]);
-  const [filtro, setFiltro] = useState("");
+interface State {
+  produtos: IProduto[];
+  filtro: string;
+}
 
-  // Carrega dados do localStorage + fixos
-  useEffect(() => {
-    const salvos = JSON.parse(localStorage.getItem("produtos") || "[]") as IProduto[];
+class ProdutosPage extends React.Component<{}, State> {
+  constructor(props: {}) {
+    super(props);
+    this.state = {
+      produtos: [],
+      filtro: "",
+    };
+  }
+
+  componentDidMount() {
+    const produtosLocal = JSON.parse(localStorage.getItem("produtos") || "[]") as IProduto[];
 
     const todos = [...produtosFixos];
-
-    salvos.forEach((c) => {
-      const existe = todos.some((fixo) => fixo.id === c.id);
-      if (!existe) todos.push(c);
+    produtosLocal.forEach((s) => {
+      const existe = todos.some((fixo) => fixo.id === s.id);
+      if (!existe) todos.push(s);
     });
 
-    setProdutos(todos);
-  }, []);
+    this.setState({ produtos: todos });
+  }
 
-  const excluirProduto = (id: string) => {
-    const novos = produtos.filter((c) => c.id !== id);
+  handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ filtro: e.target.value });
+  };
 
-    // Só salva os que não são fixos
+  excluirProduto = (id: string) => {
+    const novos = this.state.produtos.filter((s) => s.id !== id);
+
     const apenasCustomizados = novos.filter(
-      (c) => !produtosFixos.some((fixo) => fixo.id === c.id)
+      (s) => !produtosFixos.some((fixo) => fixo.id === s.id)
     );
 
     localStorage.setItem("produtos", JSON.stringify(apenasCustomizados));
-    setProdutos(novos);
+    this.setState({ produtos: novos });
   };
 
-  const editarProduto = (produto: IProduto) => {
+  editarProduto = (produto: IProduto) => {
     localStorage.setItem("produtoEditando", JSON.stringify(produto));
     window.location.href = "/cadastroproduto";
   };
 
+  filtrarProdutos = (): IProduto[] => {
+    const { produtos, filtro } = this.state;
+    if (!filtro.trim()) return produtos;
 
-  const filtrarProdutos = (produtos: IProduto[]): IProduto[] => {
-    let filtrados = [...produtos];
-
-    if (filtro.trim()) {
-      filtrados = filtrados.filter(
-        (produto) =>
-          produto.id.includes(filtro) ||
-          produto.nome.toLowerCase().includes(filtro.toLowerCase())
-      );
-    }
-
-    return filtrados;
+    return produtos.filter(
+      (s) =>
+        s.id.toLowerCase().includes(filtro.toLowerCase()) ||
+        s.nome.toLowerCase().includes(filtro.toLowerCase())
+    );
   };
 
-  return (
-    <div className="container-tipos">
-      <div className="container-cli-pro-ser">
-        <h2>Produtos</h2>
-        <div className="search-session">
-          <div className="search-bar">
-            <SearchBar
-              placeholder="Digite o ID ou nome do Cliente"
-              onChange={(e) => setFiltro(e.target.value)}
-            />
-          </div>
-          <Link to="/cadastroproduto" style={{ color: "inherit" }}>
-            <div className="button-cadastro">
-              <span>Cadastrar Produto</span>
+  render(): React.ReactNode {
+    const produtosFiltrados = this.filtrarProdutos();
+
+    return (
+      <div className="container-tipos">
+        <div className="container-cli-pro-ser">
+          <h2>Produtos</h2>
+          <div className="search-session">
+            <div className="search-bar">
+              <SearchBar
+                placeholder="Digite o ID ou nome do produto"
+                onChange={this.handleSearchChange}
+              />
             </div>
-          </Link>
+            <Link to="/cadastroproduto" style={{ color: "inherit" }}>
+              <div className="button-cadastro">
+                <span>Cadastrar Produto</span>
+              </div>
+            </Link>
+          </div>
         </div>
+
+        <TabelaProdutos
+          produtos={produtosFiltrados}
+          onExcluir={this.excluirProduto}
+          onEditar={this.editarProduto}
+        />
       </div>
-
-      <TabelaProdutos
-        produtos={filtrarProdutos(produtos)}
-        onExcluir={excluirProduto}
-        onEditar={editarProduto}
-      />
-
-    </div>
-  );
-};
+    );
+  }
+}
 
 export default ProdutosPage;

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./style.css";
 import { servicos as servicosFixos } from "../../data/Servicos";
 import { IServico } from "../../types/IServico";
 import SearchBar from "../../components/SearchBar";

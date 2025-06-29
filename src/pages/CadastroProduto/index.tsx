@@ -4,23 +4,21 @@ import { IProduto } from "../../types/IProduto";
 class CadastroProduto extends React.Component<{}, IProduto> {
   constructor(props: {}) {
     super(props);
-
-    const produtoEditando = localStorage.getItem("produtoEditando");
-    const dados: IProduto = produtoEditando
-      ? JSON.parse(produtoEditando)
-      : {
-        id: "",
-        nome: "",
-        descricao: "",
-        valor: 0,
-      };
-
     this.state = {
-      id: dados.id,
-      nome: dados.nome,
-      descricao: dados.descricao,
-      valor: dados.valor,
+      id: "",
+      nome: "",
+      descricao: "",
+      valor: 0,
     };
+  }
+
+  componentDidMount() {
+    const produtoEditando = localStorage.getItem("produtoEditando");
+    if (produtoEditando) {
+      const produto = JSON.parse(produtoEditando);
+      this.setState({ ...produto });
+      localStorage.removeItem("produtoEditando");
+    }
   }
 
   handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -31,21 +29,22 @@ class CadastroProduto extends React.Component<{}, IProduto> {
   handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    const produtoSalvo = { ...this.state };
+
+    if (!produtoSalvo.id) {
+      produtoSalvo.id = Date.now().toString(); // Gera um ID simples
+    }
+
     const produtos: IProduto[] = JSON.parse(localStorage.getItem("produtos") || "[]");
 
-    const index = produtos.findIndex((p) => p.id === this.state.id);
-
-    if (index >= 0) {
-      // Editar
-      produtos[index] = this.state;
+    const index = produtos.findIndex((s) => s.id === produtoSalvo.id);
+    if (index !== -1) {
+      produtos[index] = produtoSalvo;
     } else {
-      // Cadastrar novo
-      produtos.push(this.state);
+      produtos.push(produtoSalvo);
     }
 
     localStorage.setItem("produtos", JSON.stringify(produtos));
-    localStorage.removeItem("produtoEditando");
-
     alert("Produto salvo com sucesso!");
 
     this.setState({
@@ -56,25 +55,18 @@ class CadastroProduto extends React.Component<{}, IProduto> {
     });
   };
 
-  render() {
+  render(): React.ReactNode {
     return (
       <div className="container-cadastro">
         <div className="title-cadastro">
-          <h2>{this.state.id ? "Editar Produto" : "Cadastro de Produto"}</h2>
+          <h2>{this.state.id ? "Editar Produto" : "Cadastrar Produto"}</h2>
         </div>
         <div className="form-cadastro">
           <form onSubmit={this.handleSubmit}>
-            <p>ID:</p>
-            <input
-              name="id"
-              placeholder="ID"
-              value={this.state.id}
-              onChange={this.handleChange}
-              disabled={!!localStorage.getItem("produtoEditando")} // ID não editável em edição
-            />
             <p>Nome do Produto:</p>
             <input
               name="nome"
+              type="text"
               placeholder="Nome"
               value={this.state.nome}
               onChange={this.handleChange}
@@ -82,6 +74,7 @@ class CadastroProduto extends React.Component<{}, IProduto> {
             <p>Descrição:</p>
             <input
               name="descricao"
+              type="text"
               placeholder="Descrição"
               value={this.state.descricao}
               onChange={this.handleChange}
@@ -95,7 +88,7 @@ class CadastroProduto extends React.Component<{}, IProduto> {
               value={this.state.valor}
               onChange={this.handleChange}
             />
-            <button type="submit">{this.state.id ? "Salvar Edição" : "Cadastrar"}</button>
+            <button type="submit">Salvar</button>
           </form>
         </div>
       </div>
